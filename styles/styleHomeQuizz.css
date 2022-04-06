@@ -1,0 +1,141 @@
+/*classes globais*/
+body{
+    font-family: 'Roboto', sans-serif;
+}
+/*css Home-quizz (Página inteira)*/
+.home-quizz{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 69px auto 0px auto;
+    padding-bottom: 38px;
+    width: 100%;
+    background-color: #FAFAFA;
+    min-width:375px;
+}
+/*css do container para todos os quizzes*/
+.todos-quizzes, .seus-quizzes{
+    padding-top: 38px;
+    min-width:340px;
+}
+.todos-quizzes h2, .seus-quizzes h2{
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+}
+/*css para quises já criados pelo usuário*/
+.quisezzs-locais-opcoes{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.quisezzs-locais-opcoes ion-icon{
+    font-size: 31px;
+    color: #EC362D;
+    transition: all 0.3s linear;
+}
+/*css para exibição do quadro de "criar quizz" para primeiro acesso do usuário*/
+.sem-quizz{
+    width: 340px;
+    height: 181px;
+    border: 1px dashed #D5D5D5;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+}
+.sem-quizz p{
+    font-size: 20px;
+    line-height: 23px;
+    color: #B9B9B9;
+}
+.sem-quizz button{
+    width: 151px;
+    height: 40px;
+    font-size: 21px;
+    line-height: 25px;
+    background-color:white;
+    color: #EC362D;
+    border: 1px dashed #EC362D;
+    border-radius: 50px;
+    transition: all linear 0.1s;
+}
+/*css para apresentação do quiz individual*/
+.quizz,.quizz-do-usuario{
+    width: 340px;
+    height: 181px;
+    margin-top: 14px;
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    padding: 0px 18px 7px 18px;
+}
+
+.quizz p,.quizz-do-usuario p{
+    color: white;
+    font-size: 19px;
+    line-height: 22px;
+    z-index: 1;
+}
+
+/*classes de controle*/
+.escondido{
+    display:none;
+}
+/*hover*/
+.sem-quizz button:hover{
+    cursor: pointer;
+    background-color: #EC362D;
+    color: white;
+    border: 1px dashed white;
+}
+.quisezzs-locais-opcoes ion-icon:hover{
+    cursor: pointer;
+    transform:rotate(180deg);
+}
+.quizz:hover, .quizz-do-usuario:hover{
+    cursor: pointer;
+}
+@media (min-width: 1100px){
+    .home-quizz{
+        min-width:unset;
+    }
+    .todos-quizzes, .seus-quizzes{
+        min-width:unset;
+        max-width: 1100px;
+    }
+    .quizzes-lista{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .quisezzs-locais-opcoes{
+        justify-content:unset;
+    }
+    .quisezzs-locais-opcoes ion-icon{
+        margin-left: 26px;
+    }
+    .seus-quizzes{
+        width: 100%;
+    }
+    .sem-quizz{
+        width: 100%;
+    }
+}
+.tela-de-carregamento{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+.tela-de-carregamento img{
+    width: 80px;
+}

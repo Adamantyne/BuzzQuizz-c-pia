@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="BuzzQuizz">
+    <meta name="keywords" content="HTML, CSS, JS">
+    <meta name="author" content="Guilherme Alves Texeira, Samuel Ambrozio Marco">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@100;200;300;400;500;600;700;800;900&family=Righteous&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/styleHomeQuizz.css">
+    <link rel="stylesheet" href="./styles/styleExibicaoQuizz.css">
+    <link rel="stylesheet" href="./styles/styleCriacaoQuizz.css">
+
+    <title>BuzzQuizz</title>
+    
+    <link rel="shortcut icon" href="./assets/logo-quizz-web.png" type="image/x-icon">
+    <link rel="icon" href="./assets/logo-quizz-web.png" type="image/x-icon">
+</head>
+
+<body>
+
+    <main>
+
+        <header class="flex" onclick="voltarParaHome()">
+            <p>BuzzQuizz</p>
+        </header>
+        
+        <section class="tela-de-carregamento">
+            <img src="assets/loading (1).gif" alt="Tela de carregamento">
+        </section>
+        
+        <section class="home-quizz">
+            <section class="seus-quizzes">
+                <div class="quisezzs-locais-opcoes">
+                    <h2>Seus Quizzes</h2>
+                    <ion-icon data-identifier="create-quizz" onclick="criarQuizz()" name="add-circle"></ion-icon>
+                </div>
+                <div class="quizzes-lista"></div>
+            </section>
+            <section class="todos-quizzes">
+                <h2>Todos os Quizzes:</h2>
+                <div class="quizzes-lista">    
+                    <!--aqui será aberto os quizzes em geral-->
+                </div>
+            </section>
+        </section>
+        
+        <section class="exibicao-quizz escondido">
+            <div class="imagem-topo">
+                <!--aqui ficará a imagem do topo e o título do quiz-->
+            </div>
+            <div class="exibicao-perguntas">
+                <!--aqui ficará as perguntas e as respostas-->
+            </div>
+            <article data-identifier="quizz-result" class="resultado-do-quizz escondido">
+                <div class="titulo-do-resultado">
+                    <!--aqui ficará o título do level-->
+                </div>
+            </article>
+            <article class="pos-navegacao-quizz escondido">
+                <button class="reiniciar-quizz" onclick="reiniciandoQuizz()">Reiniciar Quizz</button>
+                <button class="voltar-para-homequizz" onclick="voltarParaHomeQuizz()">Voltar pra home</button>
+            </article>
+        </section>
+        
+        <section class="criacao-de-quizz escondido">
+            
+            <article class="informacoes-basicas">
+                
+                <p class="topo">Comece pelo começo</p>
+                
+                <div class="input-informacoes-basicas">
+                    <div>
+                        <input type="text" placeholder="Título do seu quizz" minlength="20" maxlength="65">
+                        <input type="text" placeholder="URL da imagem do seu quizz">
+                        <input type="number" placeholder="Quantidade de perguntas do quizz" min="3">
+                        <input type="number" placeholder="Quantidade de níveis do quizz" min="2">
+                    </div>
+                </div>
+                
+                <div class="flex">
+                    <button onclick="entrarTelaCriacaoPerguntas(this)">
+                        <strong>Prosseguir pra criar perguntas</strong>
+                    </button>
+                </div>
+                
+            </article>
+
+            <article class="criacao-perguntas escondido">
+                <p class="topo">Crie suas perguntas</p>
+
+                <div class="perguntas"></div>
+
+                <div class="flex">
+                    <button onclick="entrarTelaCriacaoNiveis(this)">
+                        <strong>Prosseguir pra criar níveis</strong>
+                    </button>
+                </div>
+            </article>
+            
+            <article class="criacao-niveis escondido">
+                <p class="topo">Agora, decida os níveis!</p>
+
+                <div class="opcoes-niveis"></div>
+                
+                <div class="flex">
+                    <button onclick="entrarTelaConfirmarQuizz(this)">
+                        <strong>Finalizar Quizz</strong>
+                    </button>
+                </div>
+            </article>
+            
+            <article class="confirmar-quizz escondido">
+                <p class="topo">Seu quizz está pronto</p>
+                <figure>
+                    <div></div>
+                </figure>
+                <div class="flex">
+                    <button onclick="JogarQuizz()">
+                        <strong>Acessar Quizz</strong>
+                    </button>
+                </div>
+                <div class="voltar-home" onclick="voltarParaHome()">
+                    <p>Voltar pra home</p>
+                </div>
+            </article>
+       
+        </section>
+
+    </main>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    
+    <script src="./js/scriptCriacaoQuizz.js"></script>
+    <script src="./js/scriptHomeQuizz.js"></script>
+    <script src="./js/scriptExibicaoQuizz.js"></script>
+    
+    <script>
+    function JogarQuizz(){
+        const sairSessaoConfirmarQuizz = document.querySelector('.confirmar-quizz');
+        sairSessaoConfirmarQuizz.classList.add('escondido');
+        jogandoQuizzCriado();
+   }
+    </script>
+
+</body>
+</html>
